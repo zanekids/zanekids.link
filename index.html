@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZANE KIDS - بەستەرەکان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        /* پاشبنەمای جووڵاو */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -150px;
+            background: rgba(99, 102, 241, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 18s; animation-delay: -2s; }
+        .bubble:nth-child(2) { width: 120px; height: 120px; left: 25%; animation-duration: 25s; animation-delay: -7s; background: rgba(78, 205, 196, 0.15); }
+        .bubble:nth-child(3) { width: 60px; height: 60px; left: 45%; animation-duration: 22s; animation-delay: -12s; background: rgba(255, 107, 107, 0.15); }
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 70%; animation-duration: 30s; animation-delay: -15s; background: rgba(99, 102, 241, 0.1); }
+        .bubble:nth-child(5) { width: 50px; height: 50px; left: 85%; animation-duration: 15s; animation-delay: -4s; background: rgba(78, 205, 196, 0.1); }
+        .bubble:nth-child(6) { width: 40px; height: 40px; left: 5%; animation-duration: 20s; animation-delay: -10s; background: rgba(255, 107, 107, 0.1); }
+        .bubble:nth-child(7) { width: 90px; height: 90px; left: 35%; animation-duration: 24s; animation-delay: -3s; }
+        .bubble:nth-child(8) { width: 70px; height: 70px; left: 55%; animation-duration: 19s; animation-delay: -18s; background: rgba(78, 205, 196, 0.1); }
+        .bubble:nth-child(9) { width: 110px; height: 110px; left: 80%; animation-duration: 28s; animation-delay: -5s; }
+        .bubble:nth-child(10) { width: 45px; height: 45px; left: 95%; animation-duration: 16s; animation-delay: -12s; background: rgba(99, 102, 241, 0.15); }
+        .bubble:nth-child(11) { width: 55px; height: 55px; left: 15%; animation-duration: 21s; animation-delay: -1s; background: rgba(99, 102, 241, 0.08); }
+        .bubble:nth-child(12) { width: 95px; height: 95px; left: 42%; animation-duration: 26s; animation-delay: -9s; background: rgba(78, 205, 196, 0.12); }
+        .bubble:nth-child(13) { width: 65px; height: 65px; left: 62%; animation-duration: 23s; animation-delay: -14s; background: rgba(255, 107, 107, 0.1); }
+        .bubble:nth-child(14) { width: 85px; height: 85px; left: 22%; animation-duration: 17s; animation-delay: -6s; }
+        .bubble:nth-child(15) { width: 48px; height: 48px; left: 52%; animation-duration: 29s; animation-delay: -11s; background: rgba(99, 102, 241, 0.1); }
+        .bubble:nth-child(16) { width: 72px; height: 72px; left: 88%; animation-duration: 22s; animation-delay: -3s; background: rgba(78, 205, 196, 0.08); }
+        .bubble:nth-child(17) { width: 52px; height: 52px; left: 2%; animation-duration: 25s; animation-delay: -13s; background: rgba(255, 107, 107, 0.12); }
+        .bubble:nth-child(18) { width: 102px; height: 102px; left: 68%; animation-duration: 19s; animation-delay: -8s; }
+        .bubble:nth-child(19) { width: 42px; height: 42px; left: 33%; animation-duration: 31s; animation-delay: -16s; background: rgba(78, 205, 196, 0.1); }
+        .bubble:nth-child(20) { width: 88px; height: 88px; left: 78%; animation-duration: 20s; animation-delay: -2s; background: rgba(99, 102, 241, 0.1); }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: block;
+            width: 110px;
+            height: 110px;
+            background-image: url('zanelogo.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid #6366f1;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 900;
+            color: #6366f1;
+            letter-spacing: -0.5px;
+        }
+        p {
+            margin: 10px 0 30px;
+            font-size: 14px;
+            color: #4f46e5;
+            line-height: 1.6;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            margin-bottom: 18px;
+            padding: 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: #6366f1;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .link-card:nth-of-type(1) { animation-delay: 0.1s; }
+        .link-card:nth-of-type(2) { animation-delay: 0.2s; }
+        .link-card:nth-of-type(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: #6366f1;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+        .link-card:hover i {
+            color: #fff;
+        }
+        .link-card:active {
+            transform: scale(0.98);
+        }
+        .link-card i {
+            font-size: 24px;
+            margin-left: 15px;
+            color: #6366f1;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation">
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+    </div>
+
+    <div class="container">
+        <a href="https://www.instagram.com/zanes9966?igsh=OHk5a3NtYXliZWti" class="logo"></a>
+        <h1>ZANE KIDS</h1>
+        <p>ZANE KIDS - KIDS FASHION</p>
+
+        <a href="https://www.instagram.com/zanes9966?igsh=OHk5a3NtYXliZWti" class="link-card" target="_blank">
+            <i class="fab fa-instagram"></i> ئینستاگرام 
+        </a>
+        <a href="https://www.facebook.com/share/14dDD6ZB1uq/" class="link-card" target="_blank">
+            <i class="fab fa-facebook"></i> فەیسبووک
+        </a>
+        <a href="https://wa.me/07701084223" class="link-card" target="_blank">
+            <i class="fab fa-whatsapp"></i> واتسئاپ
+        </a>
+    </div>
+
+</body>
+</html>
